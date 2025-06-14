@@ -19,7 +19,9 @@ class SeiyuuInfo(commands.Cog):
         current: str
     ) -> list[app_commands.Choice[str]]:
         return [app_commands.Choice(name=seiyuu.seiyuu_name, value=seiyuu.seiyuu_name)
-                for seiyuu in ScdbSeiyuu.select().where((ScdbSeiyuu.seiyuu_name.contains(current))).limit(25)]
+                    for seiyuu in ScdbSeiyuu.select().where(
+                        ScdbSeiyuu.seiyuu_name.contains(current)
+                    ).limit(25)]
 
     @app_commands.command(name="seiyuuinfo", description="查詢聲優資料")
     @app_commands.describe(seiyuu="聲優姓名")

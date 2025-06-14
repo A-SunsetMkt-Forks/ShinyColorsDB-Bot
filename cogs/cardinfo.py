@@ -17,6 +17,7 @@ class CardInfo(commands.Cog):
         interaction: discord.Interaction,
         current: str
     ) -> list[app_commands.Choice[str]]:
+        print(ScdbCardList.select().where(ScdbCardList.card_name.contains(current)).order_by(ScdbCardList.enza_id.asc()))
         return [app_commands.Choice(name=card.card_name, value=card.card_name)
                        for card in ScdbCardList.select().where(ScdbCardList.card_name.contains(current)).order_by(ScdbCardList.enza_id.asc()).limit(25)]
 

@@ -8,6 +8,7 @@ class Sync(commands.Cog):
 
     @commands.command()
     async def sync(self, ctx) -> None:
+        print(ctx.message.author)
         if not (str(ctx.message.author) == str(os.environ.get("OWNER"))):
             return
 
